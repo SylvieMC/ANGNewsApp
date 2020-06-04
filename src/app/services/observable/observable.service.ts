@@ -26,7 +26,16 @@ export class ObservablesService {
       break;
     };
   };
-  public getUserInfo(): Observable<any> { return this.userInfo };
+
+  public storeUserInfo(user: any): void {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+ // public getUserInfo(): Observable<any> { return this.userInfo };
+
+  public getUserInfo(): any{
+     return JSON.parse(localStorage.getItem('user'));
+  };
 
 }
 //

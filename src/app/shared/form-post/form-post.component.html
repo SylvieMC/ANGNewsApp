@@ -1,0 +1,16 @@
+<h1>Select your information source and keywords (optional)</h1>
+<form
+  [formGroup]="formData"
+  (submit)="searchForm()">
+    <select
+        formControlName="source"
+        name="source" placeholder="Select source..."
+    >
+    <option>1</option>
+    </select>
+    <input
+        formControlName="keyword"
+        type="text" name="keyword" required minlength="5" placeholder="Any keywords?"
+    >
+    <button type="submit">OK</button>
+</form>

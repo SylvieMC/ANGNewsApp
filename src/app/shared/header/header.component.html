@@ -1,13 +1,14 @@
 <nav>
   <ul>
       <li *ngIf="!userData">
-          <a [routerLink]="'/'">Home</a>
+          <a [routerLink]="'/login'">Login</a>
       </li>
       <li *ngIf="userData">
           <a [routerLink]="'/connected'">Connected</a>
       </li>
       <li *ngIf="userData">
-          <a href="#" (click)="logout()">Logout</a>
+
+          <button (click)="logout()">log out</button>
       </li>
   </ul>
 </nav>

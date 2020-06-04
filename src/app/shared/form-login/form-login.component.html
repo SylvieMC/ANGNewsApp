@@ -1,12 +1,11 @@
+<h1>News feed</h1>
 <form
   [formGroup]="formData"
-  (submit)="formSubmit.emit(formData.value.email)"
->
+  (submit)="loginForm()">
     <input
         formControlName="email"
         type="email" name="email" required minlength="5" placeholder="Your email"
     >
-
     <button
         [disabled]="!formData.valid"
         type="submit"

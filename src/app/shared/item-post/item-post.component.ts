@@ -3,6 +3,8 @@ Import
 */
     // Angular
     import { Component, OnInit, Input } from '@angular/core';
+    import { ApiService } from '../../services/api/api.service';
+
 //
 
 /*
@@ -22,8 +24,14 @@ Componant class definition
 
         // Input  data from parent component
         @Input() post: any;
+        articles: any;
 
-        constructor(){}
-        ngOnInit(){};
+        constructor( private apiService: ApiService){}
+        ngOnInit(){
+          this.apiService.getNews().subscribe((data)=>{
+            console.log(data);
+            this.articles = data['articles'];
+          });
+        };
     };
 //

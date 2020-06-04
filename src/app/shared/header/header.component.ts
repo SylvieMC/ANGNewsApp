@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ObservablesService } from "../../services/observable/observable.service";
-import { CrudService } from "../../services/crud/crud.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,14 +15,17 @@ export class HeaderComponent implements OnInit {
       // Properties
       public userData: any;
 
-      constructor(
-        private ObservablesService: ObservablesService,
-        private CrudService: CrudService
-      ){
+      constructor( private Router: Router, private observablesService: ObservablesService){
           // Get user data observer
-          this.ObservablesService.getUserInfo().subscribe( userDataObserver => {
-            if(userDataObserver === null) { this.userData = null }
-            else{
+     /*     this.ObservablesService.getUserInfo().subscribe( userDataObserver => {
+
+            if(userDataObserver === null) {
+              console.log("null", userDataObserver);
+
+               this.userData = null;
+            }
+           else{
+              console.log("not null", userDataObserver);
                 if(userDataObserver.length > 0){
                     // Set local storage
                     localStorage.setItem('userEmail', userDataObserver[0].email );
@@ -34,17 +37,23 @@ export class HeaderComponent implements OnInit {
                     this.userData = null
                 }
             }
-        })
+        })*/
+
 
       }
+
   //
 
   public logout = () => {
     // Delete localstorage
-    localStorage.removeItem('userEmail');
+    localStorage.clear();
+    this.userData = null;
+    this.Router.navigateByUrl('/home');
 
     // Set user info obserrbale value
-    this.ObservablesService.setObservableData('users', null)
+   // this.observablesService.setObservableData('users', null)
 }
-  ngOnInit(){};
+  ngOnInit(){
+    this.userData = this.observablesService.getUserInfo();
+  };
 };
