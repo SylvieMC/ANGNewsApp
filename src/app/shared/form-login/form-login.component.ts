@@ -55,4 +55,7 @@ export class FormLoginComponent implements OnInit, OnChanges {
         this.resetForm();
         this.userData = this.observablesService.getUserInfo();
     }
+    ngOnChanges(changes){
+
+    };
 }
