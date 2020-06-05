@@ -23,8 +23,7 @@ Component configuration
 Component class definition
 */
   export class ConnectedPageComponent implements OnInit {
-    @Input() sources: Array<any>;
-    @Input() sourceInfo: Array<any>;
+
 
     /*
     Declarations
@@ -48,7 +47,16 @@ Component class definition
           this.postCollection = await this.CrudService.readAllItems('');
         };
     //
-
+    get source(): any {
+      var source_json = localStorage.getItem('source');
+      var source_list = JSON.parse(source_json);
+      return source_list;
+    }
+    get article(): any {
+      var article_json = localStorage.getItem('article');
+      var article_list = JSON.parse(article_json);
+      return article_list;
+    }
     /*
     Hooks
     */

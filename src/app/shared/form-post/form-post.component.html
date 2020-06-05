@@ -1,4 +1,4 @@
-<h1>Select your information source and keywords (optional)</h1>
+<h1>Select your information source and keywords</h1>
 <form [formGroup]="form" (submit)="search()">
     <select
         formControlName="source"
@@ -19,7 +19,7 @@
 
 <h1>Article List</h1>
 <ul id="newsFeed">
-  <li *ngFor="let article of articles">
+  <li *ngFor="let article of articles; let i = index" [attr.id]="'post' + i">
     <img src="{{article.urlToImage}}">
     <div class="newsInfo">
       <h3>{{article.title}}</h3>
@@ -28,6 +28,8 @@
       </p>
       <p>Source: {{article.source.name}}</p>
       <a href="{{article.url}}">Read full article</a>
+      <button class="float-right" *ngIf="userData" (click)="articleFavorite(i)">Add to Bookmark</button>
+
     </div>
   </li>
 </ul>

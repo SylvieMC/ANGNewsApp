@@ -60,9 +60,13 @@ export class FormPostComponent implements OnInit {
 
   }
   sourceFavorite() {
-    console.log("add source", this.form.controls.source.value);
     const sourceInfo: string = this.form.controls.source.value;
     this.observablesService.storeSourceInfo(sourceInfo);
+  }
+  articleFavorite(index) {
+    const articleInfo = this.articles[index].url;
+    console.log("favorite", this.articles[index]);
+    this.observablesService.storeArticleInfo(articleInfo);
   }
   private initForm() {
 
