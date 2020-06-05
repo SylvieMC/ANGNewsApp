@@ -13,7 +13,7 @@ export class CrudService {
   ){ };
 
 // Get the API response
-
+/*
     // CRUD method: create item
     public createItem(endpoint: String,data: any): Promise<any>{
       // Set header
@@ -48,17 +48,18 @@ export class CrudService {
       .catch(this.handleError);
     };
 
-    // CRUD method: read an item
-    public readOneItem(endpoint: string, _id: string): Promise<any>{
-      return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}?${_id}`).toPromise()
-      .then( data => this.getData(endpoint, data))
-      .catch(this.handleError);
-    };
-
     // CRUD method: read all item
     public readAllItems(endpoint: String): Promise<any>{
       return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}`)
           .toPromise().then( data => this.getData(endpoint,data) ).catch(this.handleError);
+    };
+*/
+
+    // CRUD method: read an item
+    public readOneItem(endpoint: string, _id: string): Promise<any>{
+      return this.HttpClient.get(`https://newsapp.dwsapp.io/api/${endpoint}?${_id}`).toPromise()
+      .then( data => this.getData(endpoint, data))
+      .catch(this.handleError);
     };
 
     //  method: get User data

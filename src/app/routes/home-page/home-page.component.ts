@@ -26,12 +26,12 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   // Method to get the post list
-  public getPostList = async () => {
+  /*public getPostList = async () => {
     this.postCollection = await this.CrudService.readAllItems('');
-  };
+  };*/
   ngOnInit(){
-    this.getUserInfo('Sincere@april.biz');
-    this.getPostList();
+    //this.getUserInfo('Sincere@april.biz');
+    //this.getPostList();
     this.getSources();
   };
 
@@ -51,7 +51,7 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  public getUserInfo = async (email: String ) => {
+  /*public getUserInfo = async (email: String ) => {
     // Get user infos
     const userInfo = await this.CrudService.readOneItem('users', `email=${email}`);
 
@@ -61,6 +61,6 @@ export class HomePageComponent implements OnInit {
       // Change route endpoint
       this.Router.navigateByUrl('/connected');
     }
-};
+};*/
 
 };

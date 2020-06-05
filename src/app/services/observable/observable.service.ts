@@ -61,8 +61,11 @@ export class ObservablesService {
     } else {
       articles = JSON.parse(localStorage.getItem('article'));
     }
-    articles.push(article);
-    localStorage.setItem('article', JSON.stringify(articles));
+    if(articles.indexOf(article) == -1){
+      articles.push(article);
+      localStorage.setItem('article', JSON.stringify(articles));
+    }
+
   }
 
   public getArticleInfo(): any{

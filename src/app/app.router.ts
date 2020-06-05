@@ -32,7 +32,7 @@ Export
       {
         path: 'connected',
         component: ConnectedPageComponent,
-        canActivate: [ AuthGuard ]
+        //canActivate: [ AuthGuard ]
       }
     ];
 //

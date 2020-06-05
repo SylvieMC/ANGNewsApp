@@ -37,9 +37,9 @@ Component class definition
     Methods
     */
         // Method to get the post list
-        public getPostList = async () => {
+        /*public getPostList = async () => {
           this.postCollection = await this.CrudService.readAllItems('');
-        };
+        };*/
     //
     get source(): any {
       var source_json = localStorage.getItem('source');
@@ -55,8 +55,8 @@ Component class definition
     Hooks
     */
       ngOnInit(){
-        // Get the poost list
-        this.getPostList();
+        // Get the post list
+        //this.getPostList();
       };
     //
   };

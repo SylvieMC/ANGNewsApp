@@ -15,11 +15,12 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   public getNews(query: string = '', source?: string): Observable<any> {
-
+    console.log("query",query);
     return this.httpClient.post(
-        `${environment.api_url}/news/${source}/${query}`, {
-          "news_api_token": "97fccbac2fae46b4a05123f1b5aa016b"
-        }).pipe(takeLast(10));
+      `${environment.api_url}/news/${source}/${query}`, {
+        "news_api_token": "97fccbac2fae46b4a05123f1b5aa016b"
+    }).pipe(takeLast(10));
+
   }
 
   public getSources(): Observable<Array<any>> {

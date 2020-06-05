@@ -23,10 +23,11 @@ export class AuthGuard implements CanActivate {
           if (localStorage.getItem('user') == null) {
             resolve(false);
           }
+
           const user = JSON.parse(localStorage.getItem('user'));
             this.CrudService.readOneItem('users', user.email)
             .then( ( apiResponse ) =>  {
-               if(apiResponse.length > 0){ resolve(true); }
+               if( apiResponse.length > 0){ resolve(true); }
                 else{ this.Router.navigateByUrl('/home'); };
             })
             .catch( ( apiResponse ) =>  this.Router.navigateByUrl('/home'))
