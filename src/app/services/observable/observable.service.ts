@@ -16,7 +16,6 @@ export class ObservablesService {
 
   protected userInfo: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   protected sourceInfo: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  protected articleInfo: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   public setObservableData = (type: string, data: any) => {
     switch(type){
@@ -25,10 +24,7 @@ export class ObservablesService {
         break;
       case 'source':
         this.sourceInfo.next(data);
-        break;
-      case 'article':
-        this.articleInfo.next(data);
-        break;
+        break
       default:
       break;
     };
@@ -51,20 +47,25 @@ export class ObservablesService {
     } else {
        sources = JSON.parse(localStorage.getItem('source'));
     }
-    sources.push(source);
-    localStorage.setItem('source', JSON.stringify(sources));
-
-     /*sources = JSON.parse(localStorage.getItem('source'));
-    sources.push(source);
-    localStorage.setItem('source', JSON.stringify(sources));*/
-
-    //localStorage.setItem('source', JSON.stringify(source));
-
+    //sources.push(source);
+    //localStorage.setItem('source', JSON.stringify(sources));
+    if(sources.indexOf(source) == -1){
+      sources.push(source);
+      window.localStorage.setItem("source", JSON.stringify(sources));
+    }
   }
+
   public getSourceInfo(): any{
     return JSON.parse(localStorage.getItem('source'));
   };
-
+  public removeSourceInfo(source: any): void {
+    //localStorage.setItem('source', JSON.stringify(source));
+    if (localStorage.getItem("source") !== null) {
+      localStorage.removeItem("source");
+    } else {
+        console.log("Error");
+    }
+  }
   public storeArticleInfo(article: any): void {
     var articles;
     if (localStorage.getItem('article') === null) {

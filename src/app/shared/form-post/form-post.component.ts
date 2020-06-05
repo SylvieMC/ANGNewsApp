@@ -23,6 +23,7 @@ export class FormPostComponent implements OnInit {
   @Output() art = new EventEmitter<any>();
   @Input() sources: Array<any>;
   @Input() sourceSave: Array<any>;
+  message:string="Add to Bookmark";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -60,6 +61,7 @@ export class FormPostComponent implements OnInit {
 
   }
   sourceFavorite() {
+    //this.message="Remove Bookmark";
     const sourceInfo: string = this.form.controls.source.value;
     this.observablesService.storeSourceInfo(sourceInfo);
   }
