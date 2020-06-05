@@ -43,7 +43,10 @@ export class FormLoginComponent implements OnInit, OnChanges {
 
       if (userInfo.length > 0) {
         this.observablesService.storeUserInfo(userInfo[0]);
-        this.router.navigateByUrl('/connected');
+        //location.reload();
+        this.router.navigateByUrl('/connected').then(() => {
+          window.location.reload();
+        });
       }
 
 

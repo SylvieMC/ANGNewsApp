@@ -18,20 +18,21 @@ export class AuthGuard implements CanActivate {
 
 
      canActivate(): Promise<any> {
-     /* debugger
+      debugger
        return new Promise( (resolve, reject) => {
-          debugger
+          //debugger
 
           if (localStorage.getItem('user') == null) {
-            return false;
+            //return false;
+            resolve(false);
           }
           const user = JSON.parse(localStorage.getItem('user'));
             this.CrudService.readOneItem('users', user.email)
-            .then( ( apiResponse ) =>  {
-               if(apiResponse.length > 0){ return true }
-                else{ this.Router.navigateByUrl('/home') };
+            .then( ( apiResponse ) =>  {console.log(" apiresponse", apiResponse.length);
+               if(apiResponse.length > 0){ resolve(true); }
+                else{ this.Router.navigateByUrl('/home'); };
             })
             .catch( ( apiResponse ) =>  this.Router.navigateByUrl('/home'))
-        })*/
+        })
     }
 }

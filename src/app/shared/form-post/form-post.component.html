@@ -2,9 +2,10 @@
 <form [formGroup]="form" (submit)="search()">
     <select
         formControlName="source"
-        name="source" placeholder="Select source..."
+        name="source"
 
     >
+    <option value="" disabled selected>Select source...</option>
     <option *ngFor="let source of sources" value="{{source.id}}">{{source.name}}</option>
     </select>
     <input
@@ -19,7 +20,7 @@
   <li *ngFor="let article of articles">
     <img src="{{article.urlToImage}}">
     <div class="newsInfo">
-      <h3>{{article.title}} - {{article.publishedAt}}</h3>
+      <h3>{{article.title}}</h3>
       <p>
         {{article.description}}
       </p>

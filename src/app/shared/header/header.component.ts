@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     this.Router.navigateByUrl('/home');
 
     // Set user info obserrbale value
-   // this.observablesService.setObservableData('users', null)
+    this.observablesService.setObservableData('users', null)
 }
   ngOnInit(){
     this.userData = this.observablesService.getUserInfo();

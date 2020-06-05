@@ -14,7 +14,6 @@ import { RouterModule } from "@angular/router"
 import { AppRouterModule } from "./app.router";
 import { FormLoginComponent } from './shared/form-login/form-login.component';
 import { ConnectedPageComponent } from './routes/connected-page/connected-page.component';
-import { ItemPostComponent } from './shared/item-post/item-post.component';
 import { FormPostComponent } from './shared/form-post/form-post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,7 +26,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomePageComponent,
     FormLoginComponent,
     ConnectedPageComponent,
-    ItemPostComponent,
     FormPostComponent
   ],
   imports: [

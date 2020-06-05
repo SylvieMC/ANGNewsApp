@@ -68,7 +68,7 @@ export class HomePageComponent implements OnInit {
     // Check user info
     if(userInfo && userInfo.length > 0){
       this.observablesService.setObservableData('user', userInfo[0]);
-      this.observablesService.storeUserInfo(userInfo[0]);
+      //this.observablesService.storeUserInfo(userInfo[0]);
         // Change route endpoint
         this.Router.navigateByUrl('/connected');
     }
