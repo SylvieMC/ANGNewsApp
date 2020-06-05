@@ -1,14 +1,23 @@
-<nav>
+<nav class='navbar'>
   <ul>
+      <li>
+        <h1>NewAPPS</h1>
+      </li>
+      <li *ngIf="!userData">
+        <a [routerLink]="'/home'">Home</a>
+      </li>
       <li *ngIf="!userData">
           <a [routerLink]="'/login'">Login</a>
       </li>
       <li *ngIf="userData">
-          <a [routerLink]="'/connected'">Connected</a>
+          <a [routerLink]="'/home'">Home</a>
       </li>
       <li *ngIf="userData">
-
-          <button (click)="logout()">log out</button>
+        <a [routerLink]="'/connected'">Bookmarks</a>
+    </li>
+      <li *ngIf="userData">
+          <a (click)="logout()">Log Out</a>
       </li>
   </ul>
 </nav>
+

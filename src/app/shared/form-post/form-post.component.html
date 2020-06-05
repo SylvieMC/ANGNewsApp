@@ -1,16 +1,30 @@
 <h1>Select your information source and keywords (optional)</h1>
-<form
-  [formGroup]="formData"
-  (submit)="searchForm()">
+<form [formGroup]="form" (submit)="search()">
     <select
         formControlName="source"
         name="source" placeholder="Select source..."
+
     >
-    <option>1</option>
+    <option *ngFor="let source of sources" value="{{source.id}}">{{source.name}}</option>
     </select>
     <input
-        formControlName="keyword"
+    formControlName="keyword"
         type="text" name="keyword" required minlength="5" placeholder="Any keywords?"
     >
-    <button type="submit">OK</button>
+    <button type="submit">Search</button>
 </form>
+
+<h1>Article List</h1>
+<ul id="newsFeed">
+  <li *ngFor="let article of articles">
+    <img src="{{article.urlToImage}}">
+    <div class="newsInfo">
+      <h3>{{article.title}} - {{article.publishedAt}}</h3>
+      <p>
+        {{article.description}}
+      </p>
+      <p>Source: {{article.source.name}}</p>
+      <a href="{{article.url}}">Read full article</a>
+    </div>
+  </li>
+</ul>

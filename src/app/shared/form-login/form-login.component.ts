@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output , OnChanges} from '@angular/cor
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CrudService } from "../../services/crud/crud.service";
 import { ObservablesService } from 'src/app/services/observable/observable.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-login',
@@ -21,7 +22,9 @@ export class FormLoginComponent implements OnInit, OnChanges {
     constructor(
         private FormBuilder: FormBuilder,
         private CrudService: CrudService,
-        private observablesService: ObservablesService
+        private observablesService: ObservablesService,
+        private router: Router
+
     ) {}
 
     // Method to reset form
@@ -33,11 +36,18 @@ export class FormLoginComponent implements OnInit, OnChanges {
     };
 
     //form to login
-    public loginForm = () => {
-      this.CrudService.createItem('email', this.formData.value)
-      .then( user => console.log(user) )
-      .catch( err => console.log(err) )
-    };
+    public loginForm = async () => {
+      debugger;
+      const email: string = this.formData.value.email;
+      const userInfo = await this.CrudService.readOneItem('users', `email=${email}`);
+
+      if (userInfo.length > 0) {
+        this.observablesService.storeUserInfo(userInfo[0]);
+        this.router.navigateByUrl('/connected');
+      }
+
+
+    }
     // Start
     ngOnInit() {
         this.resetForm();

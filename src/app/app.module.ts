@@ -16,6 +16,7 @@ import { FormLoginComponent } from './shared/form-login/form-login.component';
 import { ConnectedPageComponent } from './routes/connected-page/connected-page.component';
 import { ItemPostComponent } from './shared/item-post/item-post.component';
 import { FormPostComponent } from './shared/form-post/form-post.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FormPostComponent } from './shared/form-post/form-post.component';
     RouterModule.forRoot( AppRouterModule, { onSameUrlNavigation: 'reload' } ),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [CrudService, ObservablesService],
   bootstrap: [AppComponent]

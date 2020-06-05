@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.navbar {
+  margin-bottom: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #606c76;
+}
+.navbar li h1 {
+  display: block;
+  color: white;
+  margin: 0;
+  text-align: center;
+  height: 100%;
+  padding: 7px 16px;
+  font-size: 2em;
+}
+.navbar li {
+    float: left;
+    margin-bottom: 0;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #ab5dda;
+}
+#newsFeed {
+  line-height: 1;
+  list-style: none;
+}
+#newsFeed > li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  min-height: 20rem;
+}
+#newsFeed img {
+  width: calc( 40% - 1rem );
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.newsInfo {
+  padding: 0;
+  margin: auto;
+  list-style: none;
+  width: calc( 60% - 5rem );
+}
