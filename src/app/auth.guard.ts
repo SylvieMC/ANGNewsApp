@@ -18,12 +18,9 @@ export class AuthGuard implements CanActivate {
 
 
      canActivate(): Promise<any> {
-      //debugger
        return new Promise( (resolve, reject) => {
-          //debugger
 
           if (localStorage.getItem('user') == null) {
-            //return false;
             resolve(false);
           }
           const user = JSON.parse(localStorage.getItem('user'));

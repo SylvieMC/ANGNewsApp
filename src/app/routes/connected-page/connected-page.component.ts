@@ -1,24 +1,16 @@
 /*
 Import
 */
-  // Angular
   import { Component, OnInit, Input } from '@angular/core';
-
-  // Inner
   import { CrudService } from "../../services/crud/crud.service";
   import { ObservablesService } from 'src/app/services/observable/observable.service';
   import { ApiService } from '../../services/api/api.service';
 
-//
-
-/*
-Component configuration
-*/
   @Component({
     selector: 'app-connected-page',
     templateUrl: './connected-page.component.html',
   })
-//
+
 /*
 Component class definition
 */
@@ -29,7 +21,9 @@ Component class definition
     Declarations
     */
       public postCollection: any;
-
+    /*
+    Constructor
+    */
       constructor(
         private CrudService: CrudService,
         private observablesService: ObservablesService,

@@ -1,35 +1,18 @@
-/*
-Imports
-*/
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ObservablesService } from "../observable/observable.service";
 
-//
-
-/*
-Definition & export
-*/
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
-  /*
-  Déclarations
-  */
+
   constructor(
     private HttpClient: HttpClient,
     private ObservablesService: ObservablesService
-  ){
-  };
-  //
+  ){ };
 
-
-  /*
-  Methods CRUD
-  */
 // Get the API response
-
 
     // CRUD method: create item
     public createItem(endpoint: String,data: any): Promise<any>{
@@ -65,6 +48,7 @@ export class CrudService {
       .catch(this.handleError);
     };
 
+    // CRUD method: read an item
     public readOneItem(endpoint: string, _id: string): Promise<any>{
      //debugger;
       return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}?${_id}`).toPromise()
@@ -72,28 +56,29 @@ export class CrudService {
       .catch(this.handleError);
     };
 
+    // CRUD method: read all item
     public readAllItems(endpoint: String): Promise<any>{
       return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}`)
           .toPromise().then( data => this.getData(endpoint,data) ).catch(this.handleError);
     };
 
-  private getData = (endpoint: String = '', apiResponse: any) => {
+    //  method: get User data
+    private getData = (endpoint: String = '', apiResponse: any) => {
     // Switch endpoint to set observable value
-    switch(endpoint){
-    case 'users':
-        // Set user info obserrbale value
-        this.ObservablesService.setObservableData('user',apiResponse.data)
+      switch(endpoint){
+        case 'users':
+            // Set user info obserrbale value
+            this.ObservablesService.setObservableData('user',apiResponse.data)
 
-        // Return data
-        return apiResponse || {};
-        break;
-    default:
-        // Retun data anytime
-        return apiResponse || {};
-        break;
+            // Return data
+            return apiResponse || {};
+            break;
+        default:
+            // Retun data anytime
+            return apiResponse || {};
+            break;
+      };
     };
-  };
   // Get the API error
   private handleError = (apiError: any) => Promise.reject(apiError.error);
 }
-//

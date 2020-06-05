@@ -1,9 +1,5 @@
-/*
-Imports
-*/
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-//
 
 /*
 Definition and export
@@ -34,7 +30,7 @@ export class ObservablesService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
- // public getUserInfo(): Observable<any> { return this.userInfo };
+  // public getUserInfo(): Observable<any> { return this.userInfo };
 
   public getUserInfo(): any{
      return JSON.parse(localStorage.getItem('user'));
@@ -47,8 +43,7 @@ export class ObservablesService {
     } else {
        sources = JSON.parse(localStorage.getItem('source'));
     }
-    //sources.push(source);
-    //localStorage.setItem('source', JSON.stringify(sources));
+    //don't add already displayed data
     if(sources.indexOf(source) == -1){
       sources.push(source);
       window.localStorage.setItem("source", JSON.stringify(sources));
@@ -58,14 +53,7 @@ export class ObservablesService {
   public getSourceInfo(): any{
     return JSON.parse(localStorage.getItem('source'));
   };
-  public removeSourceInfo(source: any): void {
-    //localStorage.setItem('source', JSON.stringify(source));
-    if (localStorage.getItem("source") !== null) {
-      localStorage.removeItem("source");
-    } else {
-        console.log("Error");
-    }
-  }
+
   public storeArticleInfo(article: any): void {
     var articles;
     if (localStorage.getItem('article') === null) {
@@ -75,16 +63,9 @@ export class ObservablesService {
     }
     articles.push(article);
     localStorage.setItem('article', JSON.stringify(articles));
-
-    /*sources = JSON.parse(localStorage.getItem('source'));
-    sources.push(source);
-    localStorage.setItem('source', JSON.stringify(sources));*/
-
-    //localStorage.setItem('source', JSON.stringify(source));
-
   }
+
   public getArticleInfo(): any{
     return JSON.parse(localStorage.getItem('article'));
   };
 }
-//

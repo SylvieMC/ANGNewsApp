@@ -15,34 +15,10 @@ export class HeaderComponent implements OnInit {
       // Properties
       public userData: any;
 
-      constructor( private Router: Router, private observablesService: ObservablesService){
-          // Get user data observer
-     /*     this.ObservablesService.getUserInfo().subscribe( userDataObserver => {
-
-            if(userDataObserver === null) {
-              console.log("null", userDataObserver);
-
-               this.userData = null;
-            }
-           else{
-              console.log("not null", userDataObserver);
-                if(userDataObserver.length > 0){
-                    // Set local storage
-                    localStorage.setItem('userEmail', userDataObserver[0].email );
-
-                    // Update userData value
-                    this.userData = userDataObserver[0];
-                }
-                else{
-                    this.userData = null
-                }
-            }
-        })*/
-
-
-      }
-
-  //
+      constructor(
+        private Router: Router,
+        private observablesService: ObservablesService
+      ){ }
 
   public logout = () => {
     // Delete localstorage
@@ -50,7 +26,7 @@ export class HeaderComponent implements OnInit {
     this.userData = null;
     this.Router.navigateByUrl('/home');
 
-    // Set user info obserrbale value
+    // Set user info observabale value
     this.observablesService.setObservableData('users', null)
 }
   ngOnInit(){

@@ -1,10 +1,6 @@
 <h1>Select your information source and keywords</h1>
 <form [formGroup]="form" (submit)="search()">
-    <select
-        formControlName="source"
-        name="source"
-
-    >
+    <select formControlName="source" name="source">
     <option value="" disabled selected>Select source...</option>
     <option *ngFor="let source of sources; let n = index" [value]="source.id" [attr.id]="'post' + n">{{source.name}}</option>
     </select>
