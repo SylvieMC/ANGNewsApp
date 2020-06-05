@@ -4,6 +4,7 @@ export class Article {
     public articles?: any,
     public urlToImage?: {name:string},
     public title?: {name:string},
-    public description?: {name: string}
+    public description?: {name: string},
+    public url?: {name: string}
   ) { }
 }

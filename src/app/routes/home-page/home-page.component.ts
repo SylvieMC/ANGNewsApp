@@ -41,25 +41,25 @@ export class HomePageComponent implements OnInit {
     this.apiService.getNews(keyword, sourceKey)
     .subscribe(data=>{
       console.log(data);
-      debugger;
+      //debugger;
       this.articles = data;
     });
   }
 
   public getSources(){
-    debugger;
+    //debugger;
     this.apiService.getSources()
     .subscribe(data=>{
       console.log(data);
 
       //this.showNews(null, data[0].id);
-      debugger;
+      //debugger;
       this.sources = data;
     });
   }
 
   public getUserInfo = async (email: String ) => {
-    debugger;
+    //debugger;
     // Get user infos
     const userInfo = await this.CrudService.readOneItem('users', `email=${email}`);
 

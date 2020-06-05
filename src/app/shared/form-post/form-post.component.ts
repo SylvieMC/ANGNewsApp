@@ -22,6 +22,7 @@ export class FormPostComponent implements OnInit {
   @Input() post: any;
   @Output() art = new EventEmitter<any>();
   @Input() sources: Array<any>;
+  @Input() sourceSave: Array<any>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,8 +35,12 @@ export class FormPostComponent implements OnInit {
   searchPosts(keyword: string) {
     this.keywordArticle.next(keyword);
   }
+
+
   ngOnInit(): void {
     this.initForm();
+    this.userData = this.observablesService.getUserInfo();
+    this.sources = this.observablesService.getSourceInfo();
 
   }
 
@@ -43,8 +48,7 @@ export class FormPostComponent implements OnInit {
     return this.form.controls;
   }
   search() {
-    debugger;
-
+    //debugger;
 
     const keyword = this.form.controls.keyword.value;
     const source = this.form.controls.source.value;
@@ -54,9 +58,12 @@ export class FormPostComponent implements OnInit {
       source: source
     });
 
-
   }
-
+  sourceFavorite() {
+    console.log("add source", this.form.controls.source.value);
+    const sourceInfo: string = this.form.controls.source.value;
+    this.observablesService.storeSourceInfo(sourceInfo);
+  }
   private initForm() {
 
     const target = {

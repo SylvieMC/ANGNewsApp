@@ -37,7 +37,7 @@ export class FormLoginComponent implements OnInit, OnChanges {
 
     //form to login
     public loginForm = async () => {
-      debugger;
+      //debugger;
       const email: string = this.formData.value.email;
       const userInfo = await this.CrudService.readOneItem('users', `email=${email}`);
 

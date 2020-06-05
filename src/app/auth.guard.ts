@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
 
 
      canActivate(): Promise<any> {
-      debugger
+      //debugger
        return new Promise( (resolve, reject) => {
           //debugger
 

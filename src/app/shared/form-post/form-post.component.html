@@ -6,13 +6,15 @@
 
     >
     <option value="" disabled selected>Select source...</option>
-    <option *ngFor="let source of sources" value="{{source.id}}">{{source.name}}</option>
+    <option *ngFor="let source of sources" [value]="source.id">{{source.name}}</option>
     </select>
     <input
     formControlName="keyword"
         type="text" name="keyword" required minlength="5" placeholder="Any keywords?"
     >
     <button type="submit">Search</button>
+    <button class="float-right" *ngIf="userData" (click)="sourceFavorite()">Add to Bookmark</button>
+
 </form>
 
 <h1>Article List</h1>

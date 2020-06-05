@@ -2,10 +2,13 @@
 Import
 */
   // Angular
-  import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit, Input } from '@angular/core';
 
   // Inner
   import { CrudService } from "../../services/crud/crud.service";
+  import { ObservablesService } from 'src/app/services/observable/observable.service';
+  import { ApiService } from '../../services/api/api.service';
+
 //
 
 /*
@@ -20,6 +23,8 @@ Component configuration
 Component class definition
 */
   export class ConnectedPageComponent implements OnInit {
+    @Input() sources: Array<any>;
+    @Input() sourceInfo: Array<any>;
 
     /*
     Declarations
@@ -27,7 +32,10 @@ Component class definition
       public postCollection: any;
 
       constructor(
-        private CrudService: CrudService
+        private CrudService: CrudService,
+        private observablesService: ObservablesService,
+        private apiService: ApiService
+
       ){}
     //
 
