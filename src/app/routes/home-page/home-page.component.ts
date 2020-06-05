@@ -36,12 +36,14 @@ export class HomePageComponent implements OnInit {
   };
 
   public showNews($event?: any, source?: string){
+    debugger;
     const keyword: string = $event?.keyword;
     const sourceKey: string =  source === undefined ? $event.source : source;
     this.apiService.getNews(keyword, sourceKey)
     .subscribe(data=>{
-      console.log(data);
-      this.articles = data;
+      console.log("article",data.data.articles);
+debugger;
+      this.articles = data.data.articles;
     });
   }
 

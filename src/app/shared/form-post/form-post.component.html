@@ -13,7 +13,7 @@
 
 </form>
 
-<h1>Article List</h1>
+<hr/>
 <ul id="newsFeed">
   <li *ngFor="let article of articles; let i = index" [attr.id]="'post' + i">
     <img src="{{article.urlToImage}}">

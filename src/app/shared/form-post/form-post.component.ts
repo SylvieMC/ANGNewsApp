@@ -49,7 +49,7 @@ export class FormPostComponent implements OnInit {
     return this.form.controls;
   }
   search() {
-    //debugger;
+    debugger;
 
     const keyword = this.form.controls.keyword.value;
     const source = this.form.controls.source.value;

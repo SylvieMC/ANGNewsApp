@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://newsapi.org/v2',
+  api_url: 'https://newsapp.dwsapp.io/api',
   apiKey: 'b1be4d28205441e3b2def05c34b12174'
 };
 

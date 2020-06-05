@@ -12,28 +12,19 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getNews(query: string = '', source?: string): Observable<Array<Article>> {
-    let params = new HttpParams();
-    params = params.append('q', query);
-    params = params.append('sources', source);
-    params = params.append('apiKey', environment.apiKey);
-    return this.httpClient.get<Article>(
-      `${environment.api_url}/everything`, {params: params})
-      .pipe(
-        map(n => n.articles),
-      //  map(m =>
-       //   m.sort((a, b) => b.publishedAt - a.publishedAt)
-      //  )
-       takeLast(10)
-        );
+  public getNews(query: string = '', source?: string): Observable<any> {
 
+    return this.httpClient.post(
+        `${environment.api_url}/news/${source}/${query}`, {
+          "news_api_token": "97fccbac2fae46b4a05123f1b5aa016b"
+        }).pipe(takeLast(10));
   }
 
   public getSources(): Observable<Array<any>> {
     let params = new HttpParams();
     params = params.append('apiKey', environment.apiKey);
     return this.httpClient.get<any>(
-      `${environment.api_url}/sources`, {params: params})
+      `https://newsapi.org/v2/sources`, {params: params})
       .pipe(
           map(s => s.sources)
       );
