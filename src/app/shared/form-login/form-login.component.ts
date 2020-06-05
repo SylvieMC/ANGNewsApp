@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CrudService } from "../../services/crud/crud.service";
 import { ObservablesService } from 'src/app/services/observable/observable.service';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/models/login/login';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'app-form-login',
@@ -23,7 +25,8 @@ export class FormLoginComponent implements OnInit, OnChanges {
         private FormBuilder: FormBuilder,
         private CrudService: CrudService,
         private observablesService: ObservablesService,
-        private router: Router
+        private router: Router,
+        private apiService: ApiService
 
     ) {}
 
@@ -31,24 +34,24 @@ export class FormLoginComponent implements OnInit, OnChanges {
     private resetForm = ()  => {
         this.formData = this.FormBuilder.group({
             email: [ null, Validators.required ],
-           // password: [ null, Validators.required ]
+            password: [ null, Validators.required ]
         });
     };
 
     //form to login
     public loginForm = async () => {
-      //debugger;
       const email: string = this.formData.value.email;
-      const userInfo = await this.CrudService.readOneItem('users', `email=${email}`);
+      const password: string = this.formData.value.password;
 
-      if (userInfo.length > 0) {
-        this.observablesService.storeUserInfo(userInfo[0]);
+      this.apiService.getUser({
+        email: email,
+        password: password
+      }).subscribe( data=> {
+        this.observablesService.storeUserInfo(data);
         this.router.navigateByUrl('/connected').then(() => {
           window.location.reload();
         });
-      }
-
-
+      })
     }
     // Start
     ngOnInit() {

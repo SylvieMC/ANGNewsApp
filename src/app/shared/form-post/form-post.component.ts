@@ -49,8 +49,6 @@ export class FormPostComponent implements OnInit {
     return this.form.controls;
   }
   search() {
-    debugger;
-
     const keyword = this.form.controls.keyword.value;
     const source = this.form.controls.source.value;
 
@@ -67,7 +65,6 @@ export class FormPostComponent implements OnInit {
   }
   articleFavorite(index) {
     const articleInfo = this.articles[index].url;
-    console.log("favorite", this.articles[index]);
     this.observablesService.storeArticleInfo(articleInfo);
   }
   private initForm() {

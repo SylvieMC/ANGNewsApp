@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { catchError, map, tap, takeLast } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Article } from 'src/app/models/news/article';
+import { User } from 'src/app/models/user/user';
+import { Login } from 'src/app/models/login/login';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +32,8 @@ export class ApiService {
       );
   }
 
+  public getUser(login: Login): Observable<User> {
+    return this.httpClient.post<User>(
+      `${environment.api_url}/login`, login);
+  }
 }

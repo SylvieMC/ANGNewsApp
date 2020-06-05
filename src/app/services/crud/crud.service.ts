@@ -50,7 +50,6 @@ export class CrudService {
 
     // CRUD method: read an item
     public readOneItem(endpoint: string, _id: string): Promise<any>{
-     //debugger;
       return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}?${_id}`).toPromise()
       .then( data => this.getData(endpoint, data))
       .catch(this.handleError);

@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
           }
           const user = JSON.parse(localStorage.getItem('user'));
             this.CrudService.readOneItem('users', user.email)
-            .then( ( apiResponse ) =>  {console.log(" apiresponse", apiResponse.length);
+            .then( ( apiResponse ) =>  {
                if(apiResponse.length > 0){ resolve(true); }
                 else{ this.Router.navigateByUrl('/home'); };
             })
